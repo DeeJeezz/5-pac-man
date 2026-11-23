@@ -7,6 +7,7 @@
     "expandedProjectPaths": [
         "."
     ],
+    "file.lastUsedOpenFilter": "Все файлы (*)",
     "fileStates": {
         "walls.tsx": {
             "scaleInDock": 3,
@@ -15,6 +16,7 @@
     },
     "last.imagePath": "C:/Users/killm/Documents/Godot projects/pac-man/assets/images",
     "map.height": 16,
+    "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "map.width": 16,
