@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://2olfcn4exokk"]
+
+[ext_resource type="Script" uid="uid://bskpcee8lnjcf" path="res://scripts/components/hitbox.gd" id="1_10unq"]
+[ext_resource type="Script" uid="uid://cs65d57hehpkh" path="res://scenes/dot/dot.gd" id="1_y1unb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvja3"]
+radius = 6.0
+
+[node name="Dot" type="Node2D" unique_id=127714912]
+script = ExtResource("1_y1unb")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1552198691]
+collision_layer = 4
+script = ExtResource("1_10unq")
+metadata/_custom_type_script = "uid://bskpcee8lnjcf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=591922828]
+shape = SubResource("CircleShape2D_qvja3")

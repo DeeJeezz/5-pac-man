@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b121h0ocvim5l"]
+
+[ext_resource type="Script" uid="uid://bebeefqmq7r0" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+
+[sub_resource type="Gradient" id="Gradient_1b6gl"]
+colors = PackedColorArray(0, 0, 0, 1, 0.20511743, 0.20511743, 0.20511743, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qvja3"]
+gradient = SubResource("Gradient_1b6gl")
+
+[node name="MainMenu" type="CanvasLayer" unique_id=1085905998]
+script = ExtResource("1_fsom3")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=808001193]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="PanelContainer" unique_id=1453981226]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_qvja3")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=865561639]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1027411536]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1000282101]
+layout_mode = 2
+text = "pacman"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1692031547]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/Buttons" unique_id=929397705]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start game"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/Buttons" unique_id=2030323309]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
