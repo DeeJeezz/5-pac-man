@@ -3,12 +3,21 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "map.tmx",
     "expandedProjectPaths": [
+        "C:/Users/killm/Documents/Godot projects/pac-man/assets/images",
         "."
     ],
     "file.lastUsedOpenFilter": "Все файлы (*)",
     "fileStates": {
+        "map.tmx": {
+            "scale": 4,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 179.5,
+                "y": 129
+            }
+        },
         "walls.tsx": {
             "scaleInDock": 3,
             "scaleInEditor": 8
@@ -21,11 +30,13 @@
     "map.tileWidth": 16,
     "map.width": 16,
     "openFiles": [
-        "walls.tsx"
+        "walls.tsx",
+        "map.tmx"
     ],
     "project": "pacman.tiled-project",
     "recentFiles": [
-        "walls.tsx"
+        "walls.tsx",
+        "map.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

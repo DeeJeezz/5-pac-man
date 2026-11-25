@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cpqinfma4jtuu" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://ddd0247wjq0yj" path="res://scripts/components/hurtbox.gd" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://dk0l0u2d3mwel" path="res://assets/images/pacman-spritesheet.png" id="3_lvxji"]
+[ext_resource type="Texture2D" uid="uid://ck1iksmg8whqs" path="res://assets/images/direction_arrow.png" id="4_lvxji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0owmy"]
 radius = 7.0
@@ -68,3 +69,7 @@ debug_color = Color(0.9658696, 5.7756904e-07, 0.48699313, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1109929291]
 sprite_frames = SubResource("SpriteFrames_qvja3")
 autoplay = "default"
+
+[node name="DirectionArrow" type="Sprite2D" parent="." unique_id=666997411]
+unique_name_in_owner = true
+texture = ExtResource("4_lvxji")

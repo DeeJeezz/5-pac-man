@@ -3,8 +3,10 @@ class_name LevelController
 ## Controller for the level map, player movement.
 
 @export var world_tilemap: TileMapLayer
+@export var player: Player
 
 var _walkable_map: Dictionary[Vector2i, bool] = { }
+var _player_desired_direction: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -19,18 +21,28 @@ func _connect_signals() -> void:
 
 ## Processing [signal EventBus.player_move_requested]. Checks for the [member _walkable_map] and decide
 ## which position player allowed to move in desired direction.
-func _on_player_move_requested(player_position: Vector2, direction: Vector2i) -> void:
+func _on_player_move_requested(direction: Vector2i) -> void:
 	# Get player position on the tilemap.
-	var player_local_coords: Vector2i = world_tilemap.local_to_map(world_tilemap.to_local(player_position))
+	var player_local_coords: Vector2i = world_tilemap.local_to_map(world_tilemap.to_local(player.position))
 	# Search for farthest cell on the tilemap player can go in desired direction.
 	var tile_coords: Vector2i = player_local_coords
 	while true:
 		var next_tile_coords: Vector2i = tile_coords + direction
 		# Player cannot go outside the tilemap and on non-walkable cells.
 		if next_tile_coords not in _walkable_map or not _walkable_map[next_tile_coords]:
-			EventBus.player_allowed_to_move_to.emit(world_tilemap.to_global(world_tilemap.map_to_local(tile_coords)))
+			_wait_for_player_to_proper_position_and_move(
+				world_tilemap.to_global(world_tilemap.map_to_local(tile_coords))
+			)
 			return
 		tile_coords = next_tile_coords
+
+
+func _wait_for_player_to_proper_position_and_move(target_coords: Vector2) -> void:
+	while true:
+		if player.position != player.position.snapped(Constants.GRID):
+			continue
+
+	EventBus.player_allowed_to_move_to.emit(target_coords)
 
 
 ## Fill map with walkable and non-walkable fields on the map.

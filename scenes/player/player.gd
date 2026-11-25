@@ -5,6 +5,7 @@ class_name Player
 @export var speed: float = 15
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var direction_arrow: Sprite2D = %DirectionArrow
 @onready var hurtbox: Hurtbox = $Hurtbox
 
 ## Position for [Player] to reach.
@@ -13,7 +14,6 @@ var _target_position: Vector2
 var _allowed_to_move: bool = false
 
 var _direction_buffer_input: Vector2 = Vector2.ZERO
-var _buffer_expire_at: int = Constants.INPUT_BUFFER_EXPIRE_FRAMES
 
 
 func _ready() -> void:
@@ -57,6 +57,7 @@ func _input(event: InputEvent) -> void:
 ## Rotating [member Player.animated_sprite] accordingly it's movement direction.
 func _rotate_sprite(direction: Vector2) -> void:
 	animated_sprite.rotation = direction.angle()
+	direction_arrow.rotation = direction.angle()
 	if direction == Vector2.LEFT:
 		animated_sprite.flip_v = true
 	else:
@@ -65,7 +66,7 @@ func _rotate_sprite(direction: Vector2) -> void:
 
 ## Requesting movement in desired [param direction].
 func _request_move(direction: Vector2) -> void:
-	EventBus.player_move_requested.emit(global_position, Vector2i(direction))
+	EventBus.player_move_requested.emit(Vector2i(direction))
 	_rotate_sprite(direction)
 
 

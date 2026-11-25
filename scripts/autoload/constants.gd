@@ -14,5 +14,3 @@ const CELL_SIZE: int = 16
 const GRID: Vector2i = Vector2i(CELL_SIZE, CELL_SIZE)
 
 const WALKABLE_LAYER_NAME: StringName = &"walkable"
-
-const INPUT_BUFFER_EXPIRE_FRAMES: int = 10
