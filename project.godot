@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://cyhmbicrnkmoe"
 EventBus="*uid://b4go6upd3fu2x"
-Constants="*uid://bmg2stpdxsuuv"
 
 [debug]
 

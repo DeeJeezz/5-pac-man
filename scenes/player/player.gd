@@ -13,7 +13,7 @@ var _target_position: Vector2
 ## Flag shows if [Player] can move.
 var _allowed_to_move: bool = false
 
-var _direction_buffer_input: Vector2 = Vector2.ZERO
+var _requested_direction: Vector2i = Vector2i.ZERO
 
 
 func _ready() -> void:
@@ -54,32 +54,20 @@ func _input(event: InputEvent) -> void:
 			_request_move(Vector2.DOWN)
 
 
-## Rotating [member Player.animated_sprite] accordingly it's movement direction.
-func _rotate_sprite(direction: Vector2) -> void:
-	animated_sprite.rotation = direction.angle()
-	direction_arrow.rotation = direction.angle()
-	if direction == Vector2.LEFT:
-		animated_sprite.flip_v = true
-	else:
-		animated_sprite.flip_v = false
-
-
-## Requesting movement in desired [param direction].
 func _request_move(direction: Vector2) -> void:
-	EventBus.player_move_requested.emit(Vector2i(direction))
-	_rotate_sprite(direction)
+	if not _requested_direction:
+		EventBus.player_move_requested.emit(direction)
+	_requested_direction = direction
 
 
 func _process(delta: float) -> void:
-	if not _target_position:
-		return
-
 	if not _allowed_to_move:
 		return
 
-	# If player reached target position - stop movement.
-	if position == _target_position:
-		_allowed_to_move = false
+	position = position.move_toward(_target_position, speed * delta)
+	if not _requested_direction:
 		return
 
-	position = position.move_toward(_target_position, speed * delta)
+	if position == _target_position:
+		EventBus.player_move_requested.emit(_requested_direction)
+		print_debug('player requested another move')
